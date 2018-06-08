@@ -2,6 +2,8 @@ package com.location.alarm.controller;
 
 import javax.validation.Valid;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,20 +19,19 @@ import com.location.alarm.manager.ServiceManager;
 @RequestMapping("/service")
 public class ServiceController {
 	
+	private static final Logger logger = LogManager.getLogger(ServiceController.class);
+	
 	@Autowired
 	ServiceManager serviceManager;
 	
 	@PostMapping("/login")
 	 public Login login(@Valid @RequestBody Login login) {
 	     Login loginDetails =  serviceManager.findByEmailAndPassword(login.getEmail(), login.getPassword());
-	    		 
-	     /*UserDetails userDetails = new UserDetails();
-	     if(loginDetails != null)
-	     {
-	    	 userDetails = userDetailsRepository.findByLoginId(loginDetails.getLoginId())
-	    	 .orElseThrow(() -> new ResourceNotFoundException("UserDetails", "loginId", login.getLoginId()));
-	     }*/
-	     
+	     logger.info("Info");
+	     logger.error("Error");
+	     logger.debug("debug");
+	     logger.warn("Warn");
+	     logger.fatal("Fatal");
 		return loginDetails;
 	     
 	 }

@@ -20,7 +20,7 @@ public class ServiceDao {
 		try
 		{
 			login = jdbcTemplate.queryForObject(
-					"SELECT * FROM login where email = ? AND password = ?",
+					"SELECT * FROM Login where email = ? AND password = ?",
 					new Object[] { email, password },
 					new BeanPropertyRowMapper<Login>(
 							Login.class));
